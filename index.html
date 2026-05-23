@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VISRUTI INFRA - Final Polish</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: transparent;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        .loader-container {
+            width: 250px; /* Professional component size */
+            height: auto;
+            aspect-ratio: 6 / 9;
+        }
+
+        .logo-path {
+            fill: none;
+            stroke: #061934;
+            stroke-width: 15;
+            stroke-linecap: round;
+            stroke-linejoin: miter;
+            stroke-dasharray: 4500;
+            stroke-dashoffset: 4500;
+            animation: syncBuild 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        }
+
+        .brand-line {
+            fill: none;
+            stroke: #061934;
+            stroke-width: 6; /* Thinner for cleaner look */
+            stroke-linecap: butt;
+            opacity: 0;
+            animation: syncFade 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        }
+
+        .brand-name {
+            fill: #061934;
+            font-size: 110px;
+            font-weight: 900;
+            opacity: 0;
+            animation: syncFade 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        }
+
+        .subtitle {
+            fill: #061934;
+            font-size: 88px;
+            font-weight: 900;
+            text-anchor: middle;
+            opacity: 0;
+            animation: syncFade 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        }
+
+        @keyframes syncBuild {
+            0% { stroke-dashoffset: 4500; opacity: 0; }
+            5% { opacity: 1; }
+            45% { stroke-dashoffset: 0; }
+            85% { stroke-dashoffset: 0; opacity: 1; }
+            100% { stroke-dashoffset: -4500; opacity: 0; }
+        }
+
+        @keyframes syncFade {
+            0% { opacity: 0; transform: translateY(5px); }
+            5% { opacity: 0; }
+            45% { opacity: 1; transform: translateY(0); }
+            85% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="loader-container">
+        <!-- Tightly cropped viewBox: 600 wide, 900 tall -->
+        <svg viewBox="94 100 600 900" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+            <!-- 1. Logo -->
+            <path class="logo-path" d="M246,222 L145,222 L246,398 L394,153 L542,398 L643,222 L542,222 L442,417 L482,495 L394,647 L306,495 L346,417 L394,339 L442,417 L394,494 L346,417 L246,222" />
+            
+            <!-- 2. Header Line - Spaced 40px above VISRUTI -->
+            <path class="brand-line" d="M 145,690 L 643,690" />
+
+            <!-- 3. VISRUTI - Baseline 810 -->
+            <text x="145" y="810" class="brand-name" textLength="498" lengthAdjust="spacing">VISRUTI</text>
+
+            <!-- 4. INFRA - Baseline 940 (Mirrored spacing) -->
+            <!-- Left Double Lines -->
+            <path class="brand-line" d="M 145,905 L 230,905" />
+            <path class="brand-line" d="M 145,925 L 230,925" />
+            
+            <text x="394" y="940" class="subtitle">INFRA</text>
+            
+            <!-- Right Double Lines -->
+            <path class="brand-line" d="M 558,905 L 643,905" />
+            <path class="brand-line" d="M 558,925 L 643,925" />
+        </svg>
+    </div>
+
+</body>
+</html>
